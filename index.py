@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 from functions import printMatrix, swapPositions, determinePivot, zeroElementsBelow
 from data import matriz, matrizResultados, matrizAumentada, matrizPermutacao
 
@@ -51,3 +50,5 @@ matrizAumentada = data[0]
 m43 = data[1]
 
 printMatrix(matrizAumentada)
+
+A = matrizAumentada

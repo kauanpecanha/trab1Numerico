@@ -1,5 +1,5 @@
 import numpy as np
-from index import A, m21, m31, m41, m32, m42, m43
+from definitive import A, m21, m31, m41, m32, m42, m43
 
 def LU_decomposition(A):
     """
@@ -35,15 +35,6 @@ def LU_decomposition(A):
 
 
 L, U = LU_decomposition(A)
-
-L[1][0] = m31
-L[2][0] = m21
-L[3][0] = m41
-
-L[2][1] = m32
-L[3][1] = m42
-
-L[3][2] = m43
 
 print("Matriz A:")
 print(A)

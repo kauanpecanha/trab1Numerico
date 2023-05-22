@@ -130,6 +130,33 @@ def createLMatrix(matrix):
                 L[i][j] = 1
     return L
 
+def createUMatrix(matrix):
+    n = len(matrix)
+    U = np.zeros((n, n))
+
+    for i in range(0, 4):
+        for j in range(0, 4):
+
+            if(i==0):
+                U[i][j] = matrix[i][j]
+            if(i==1):
+                if(j==0):
+                    continue
+                else:
+                    U[i][j] = matrix[i][j]
+            if(i==2):
+                if(j in range(0, 2)):
+                    continue
+                else:
+                    U[i][j] = matrix[i][j]
+            if(i==3):
+                if(j in range(0, 3)):
+                    continue
+                else:
+                    U[i][j] = matrix[i][j]
+
+    return U
+
 def defineLElements(matrix, L, column):
     if(column == 0):
         for i in range(1, 4):

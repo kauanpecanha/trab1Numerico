@@ -1,6 +1,5 @@
 from data import matriz, matrizAumentada
-from functions import printMatrix, determinePivot, swapPositions, zeroElementsBelow, createLMatrix, defineLElements
-
+from functions import printMatrix, determinePivot, swapPositions, zeroElementsBelow, createLMatrix, defineLElements, createUMatrix
 L = createLMatrix(matrizAumentada)
 
 # passo zero: imprimir a matriz inicial
@@ -106,3 +105,6 @@ printMatrix(matrizAumentada)
 print('\n\n')
 print(f'A matriz L: \n{L}')
 print('\n\n')
+
+U = createUMatrix(matrizAumentada)
+print(f'A matriz U: \n{U}')

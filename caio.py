@@ -5,10 +5,10 @@ def LU_decomposition(A):
     """
     Realiza a fatoração LU de uma matriz A.
     
-    Args:
+    Argumento:
     A: matriz de entrada
     
-    Returns:
+    Retorna:
     L: matriz triangular inferior
     U: matriz triangular superior
     """
@@ -34,17 +34,10 @@ def LU_decomposition(A):
     return L, U
 
 
-# A = np.array([[2.94, 2.87, 2.33, 0],
-#               [1.48, 2.45, 2.89, -1.23],
-#               [6.31, 7.07, 2.79, 7.77],
-#               [8.27, -8.69, 8.79, -1.79]])
-
-
-
 L, U = LU_decomposition(A)
 
-L[1][0] = m21
-L[2][0] = m31
+L[1][0] = m31
+L[2][0] = m21
 L[3][0] = m41
 
 L[2][1] = m32

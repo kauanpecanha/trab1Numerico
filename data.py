@@ -18,3 +18,10 @@ matrizResultados = np.array([
 
 # concatenação da matriz original com sua matriz de resultados
 matrizAumentada = np.concatenate((matriz, matrizResultados), axis=1)
+
+matrizPermutacao = np.array([
+    [1, 0, 0, 0],
+    [0, 1, 0, 0],
+    [0, 0, 1, 0],
+    [0, 0, 0, 1]
+])

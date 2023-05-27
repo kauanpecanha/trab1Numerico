@@ -1,5 +1,5 @@
-from data import matriz, matrizAumentada
-from functions import printMatrix, determinePivot, swapPositions, zeroElementsBelow, createLMatrix, defineLElements, createUMatrix, printLUMatrix
+from data import matriz, matrizAumentada, matrizPermutacao
+from functions import printMatrix, determinePivot, swapPositions, zeroElementsBelow, createLMatrix, defineLElements, createUMatrix, printLUMatrix, multiplyLU
 
 
 
@@ -30,6 +30,7 @@ print('-'*100 + '\nTerceiro passo: Permutação da primeira linha pela linha piv
 
 
 matrizAumentada = swapPositions(matrizAumentada, linhaPivotal, 0)
+matrizPermutacao = swapPositions(matrizPermutacao, linhaPivotal, 0)
 print(f'\n\nDepois de trocar a primeira linha pela {linhaPivotal+1}:')
 printMatrix(matrizAumentada)
 print('\n\n')
@@ -80,6 +81,7 @@ print('-'*100 + '\nSexto passo: Permutação da segunda linha pela linha pivotal
 
 
 matrizAumentada = swapPositions(matrizAumentada, linhaPivotal, 1)
+matrizPermutacao = swapPositions(matrizPermutacao, linhaPivotal, 1)
 print(f'\n\nDepois de trocar a segunda linha pela {linhaPivotal+1}:')
 printMatrix(matrizAumentada)
 print('\n\n')
@@ -153,3 +155,8 @@ print('\n\n')
 print('A matriz U: \n')
 printLUMatrix(U)
 print('\n\n')
+print('Operação L * U: \n')
+multiplyLU(L, U)
+print(f'\n\nNúmero de Passos: {10}\n\n')
+print('\n\nMatriz de permutações: \n\n')
+printLUMatrix(matrizPermutacao)

@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 
 # função para impressão da matriz
 def printMatrix(matrix):
-    i = 0
-    j = 0
     
     for i in range(0, 4):
         for j in range(0, 5):
@@ -14,8 +12,6 @@ def printMatrix(matrix):
                 print(f'{matrix[i][j]:.2f} ', end='')
 
 def printLUMatrix(matrix):
-    i = 0
-    j = 0
 
     for i in range(0, 4):
         for j in range(0, 4):
@@ -193,3 +189,20 @@ def defineLElements(matrix, L, column):
             L[i][column] = matrix[i][column]
 
     return L
+
+def multiplyLU(matrixL, matrixU):
+
+    A = np.zeros([4, 4])
+
+    for i in range(0, 4):
+        for j in range(0, 4):
+            aux = 0
+            aux = matrixL[i, :] * matrixU[:, j]
+
+            el = 0
+            for k in range(0, (len(aux)-1)):
+                el += aux[k]
+            
+            A[i][j] = el
+
+    printLUMatrix(A)

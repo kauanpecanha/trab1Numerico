@@ -1,110 +1,155 @@
 from data import matriz, matrizAumentada
-from functions import printMatrix, determinePivot, swapPositions, zeroElementsBelow, createLMatrix, defineLElements, createUMatrix
+from functions import printMatrix, determinePivot, swapPositions, zeroElementsBelow, createLMatrix, defineLElements, createUMatrix, printLUMatrix
+
+
+
+print('-'*100 + '\nPrimeiro passo: Impressão da Matriz em estado inicial')
+
+
+
 L = createLMatrix(matrizAumentada)
-
-# passo zero: imprimir a matriz inicial
-
-print('\n\nA matriz original é:')
+print('\n\nA matriz original é:\n')
 printMatrix(matrizAumentada)
-print('\n')
+print('\n\n')
 
-# primeiro passo: definir o pivo da primeira coluna, e a linha pivotal
+
+
+print('-'*100 + '\nSegundo passo: Definição do pivo da primeira coluna e da linha pivotal')
+
+
 
 data = determinePivot(matriz, 0)
 pivo = data[0]
 linhaPivotal = data[1]
+print(f'\n\nPivo da primeira coluna: {pivo:.2f}, localizado na {linhaPivotal+1}° linha\n\n')
 
-print(f'Pivo da primeira coluna: {pivo:.4f}, localizado na {linhaPivotal+1}° linha\n\n')
 
-# segundo passo: permutar a linha da iteração pela linha pivotal
+
+print('-'*100 + '\nTerceiro passo: Permutação da primeira linha pela linha pivotal')
+
+
 
 matrizAumentada = swapPositions(matrizAumentada, linhaPivotal, 0)
-
-print(f'Depois de trocar a primeira linha pela {linhaPivotal+1}:')
+print(f'\n\nDepois de trocar a primeira linha pela {linhaPivotal+1}:')
 printMatrix(matrizAumentada)
+print('\n\n')
 
-# terceiro passo: zerar os elementos abaixo do pivo usando os coeficientes
+
+
+print('-'*100 + '\nQuarto passo: Efetuação das operações para zerar os elementos abaixo do pivo')
+
+
 
 data = zeroElementsBelow(matrizAumentada, pivo, 0)
 matrizAumentada = data[0]
 m21 = data[1]
 m31 = data[2]
 m41 = data[3]
-
+print('\n\nMatriz com os elementos abaixo do primeiro pivo zerados:')
+printMatrix(matrizAumentada)
 matrizAumentada[1][0] = m21
 matrizAumentada[2][0] = m31
 matrizAumentada[3][0] = m41
-
-L = defineLElements(matrizAumentada, L, 0)
-
-print(f'\n\nOs coeficientes: m21 = {m21:.4f}, m31 = {m31:.4f}, m41 = {m41:.4f}\n\n')
-print(f'A matriz depois de zerar os elementos abaixo do primeiro pivo é:')
+print('\n\nSubstituindo os zeros pelos coeficientes:')
 printMatrix(matrizAumentada)
+L = defineLElements(matrizAumentada, L, 0)
+U = createUMatrix(matrizAumentada)
+print(f'\n\nOs coeficientes: m21 = {m21:.2f}, m31 = {m31:.2f}, m41 = {m41:.2f}\n\n')
+print('A matriz L:')
+printLUMatrix(L)
 print('\n\n')
-print(f'A matriz L: \n{L}')
+print('A matriz U:')
+printLUMatrix(U)
 print('\n\n')
 
-# quarto passo: definir o pivo da segunda coluna
+
+
+print('-'*100 + '\nQuinto passo: Definição do pivo da segunda coluna')
+
+
 
 data = determinePivot(matrizAumentada, 1)
-
 pivo = data[0]
 linhaPivotal = data[1]
+print(f'\n\nPivo da segunda coluna: {pivo:.2f}, localizado na {linhaPivotal+1}° linha\n\n')
 
-print(f'Pivo da segunda coluna: {pivo:.4f}, localizado na {linhaPivotal+1}° linha')
 
-# quinto passo: permutar a linha da iteração pela linha pivotal
+
+print('-'*100 + '\nSexto passo: Permutação da segunda linha pela linha pivotal')
+
+
 
 matrizAumentada = swapPositions(matrizAumentada, linhaPivotal, 1)
-
-print(f'Depois de trocar a segunda linha pela {linhaPivotal+1}:')
+print(f'\n\nDepois de trocar a segunda linha pela {linhaPivotal+1}:')
 printMatrix(matrizAumentada)
 print('\n\n')
 
-# sexto passo: zerar os elementos abaixo do pivo
+
+
+print('-'*100 + '\nSétimo passo: Efetuação das operações para zerar os elementos abaixo do pivo')
+
+
 
 data = zeroElementsBelow(matrizAumentada, pivo, 1)
 matrizAumentada = data[0]
 m32 = data[1]
 m42 = data[2]
-
+print('\n\nMatriz com os elementos abaixo do segundo pivo zerados:')
+printMatrix(matrizAumentada)
 matrizAumentada[2][1] = m32
 matrizAumentada[3][1] = m42
-L = defineLElements(matrizAumentada, L, 1)
-
-print(f'\n\nOs coeficientes: m32 = {m32:.4f}, m42 = {m42:.4f}\n\n')
-
-print(f'A matriz depois de zerar os elementos abaixo do segundo pivo é:')
+print('\n\nSubstituindo os zeros pelos coeficientes:')
 printMatrix(matrizAumentada)
+L = defineLElements(matrizAumentada, L, 1)
+U = createUMatrix(matrizAumentada)
+print(f'\n\nOs coeficientes: m32 = {m32:.2f}, m42 = {m42:.2f}\n\n')
+print('A matriz L:')
+printLUMatrix(L)
 print('\n\n')
-print(f'A matriz L: \n{L}')
-print('\n\n')
+print('A matriz U:')
+printLUMatrix(U)
 
-# sétimo passo: determinar o pivo da terceira coluna
+
+
+print('-'*100 + '\nOitavo passo: determinação do pivo da terceira coluna')
+
+
 
 data = determinePivot(matrizAumentada, 2)
-
 pivo = data[0]
 linhaPivotal = data[1]
+print(f'\n\nPivo da terceira coluna: {pivo:.2f}, localizado na {linhaPivotal+1}° linha\n\n')
 
-print(f'Pivo da terceira coluna: {pivo:.4f}, localizado na {linhaPivotal+1}° linha')
 
-# oitavo passo: zerar os elementos abaixo do pivo
+
+print('-'*100 + '\nNono passo: Efetuação das operações para zerar os elementos abaixo do pivo')
+
+
 
 data = zeroElementsBelow(matrizAumentada, pivo, 2)
 matrizAumentada = data[0]
 m43 = data[1]
-
+print('\n\nMatriz com os elementos abaixo do segundo pivo zerados:')
+printMatrix(matrizAumentada)
 matrizAumentada[3][2] = m43
+print('\n\nSubstituindo os zeros pelos coeficientes:')
+printMatrix(matrizAumentada)
 L = defineLElements(matrizAumentada, L, 2)
+U = createUMatrix(matrizAumentada)
+print(f'\n\nOs coeficientes: m43 = {m43:.2f}\n\n')
 
-print(f'\n\nOs coeficientes: m43 = {m43:.4f}\n\n')
 
-print(f'A matriz depois de zerar os elementos abaixo do terceiro pivo é:')
+
+print('-'*100 + '\nDécimo passo: Impressão da Matriz Final, da Matriz L, e Matriz U')
+
+
+
+print(f'\n\nMatriz final: \n')
 printMatrix(matrizAumentada)
 print('\n\n')
-print(f'A matriz L: \n{L}')
+print('A matriz L: \n')
+printLUMatrix(L)
 print('\n\n')
-
-U = createUMatrix(matrizAumentada)
-print(f'A matriz U: \n{U}')
+print('A matriz U: \n')
+printLUMatrix(U)
+print('\n\n')

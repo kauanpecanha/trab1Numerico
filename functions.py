@@ -9,9 +9,21 @@ def printMatrix(matrix):
     for i in range(0, 4):
         for j in range(0, 5):
             if(j == 4):
-                print(f'{matrix[i][j]:.4f} ')
+                print(f'{matrix[i][j]:.2f} ')
             else:
-                print(f'{matrix[i][j]:.4f} ', end='')
+                print(f'{matrix[i][j]:.2f} ', end='')
+
+def printLUMatrix(matrix):
+    i = 0
+    j = 0
+
+    for i in range(0, 4):
+        for j in range(0, 4):
+            if (j == 3):
+                print(f'{matrix[i][j]:.2f} ')
+            else:
+                print(f'{matrix[i][j]:.2f} ', end='')
+
 
 # função para permutar linhas
 def swapPositions(matrix, linhapivotal, linhatrocar):
